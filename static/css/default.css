@@ -1,0 +1,427 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    font-size: 1rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: normal;
+    text-align: center;
+}
+
+textarea,
+input {
+    outline: none;
+    -webkit-tap-highlight-color: rgb(35, 142, 250);
+}
+
+a {
+    display: inline-block;
+    line-height: inherit;
+    color: inherit;
+    outline: 0;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+a img {
+    border: 0;
+}
+
+a:link,
+a:visited,
+a:active,
+a:hover {
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #ebeef3;
+    -webkit-border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+    height: 32px;
+    background-color: #d8dce4;
+    -webkit-border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:horizontal {
+    width: 32px;
+    background-color: #d8dce4;
+    -webkit-border-radius: 4px;
+}
+
+.u-positive-btn {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0.4rem;
+    background: rgb(35, 142, 250);
+    color: white;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.u-negative-btn {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 0.4rem;
+    background: rgb(215, 220, 224);
+    color: rgb(114, 121, 127);
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+}
+
+
+/*
+* 布局
+*/
+
+
+/* 手机全屏占比 */
+html,
+body,
+.g-window {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: 1rem;
+    color: #333;
+    background-color: rgb(245,249,255);
+}
+
+/* 水平垂直居中布局 */
+.g-window .g-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* 继承布局 */
+.g-window .g-inherit {
+    position: inherit;
+    display: inherit;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.g-window .m-nav {
+    height:100%;
+    width:4rem;
+    float:left;
+    -webkit-app-region: drag;
+}
+
+.g-window .m-main {
+    height:100%;
+    margin-left: 4rem;
+}
+
+/* 主界面左侧主列表容器样式 */
+.g-window .m-main-list {
+    float:left;
+    width:15rem; 
+    height:100%; 
+    background-color:white; 
+    border-left-style: solid; 
+    border-left-width: 1px; 
+    border-right-style: solid; 
+    border-right-width: 1px; 
+    border-color:rgb(210,212,214);
+}
+
+/* 主界面右侧内容容器样式 */
+.g-window .m-main-content {
+    height:100%; 
+    margin-left: 15.1rem;
+}
+
+/* 上中下结构容器样式 */
+.g-window .g-hbf-container {
+    height:100%; 
+    position:relative;
+}
+
+/* 上中下结构-header */
+.g-window .g-hbf-header {
+    height:8rem; 
+    width:100%; 
+    position:absolute; 
+    background-color:rgb(245,249,255);
+    -webkit-app-region: drag;
+}
+
+/* 上中下结构-body */
+.g-window .g-hbf-body {
+    background-color:white; 
+    width:100%;
+    position:absolute;
+    height:auto;
+    top:8rem;
+    bottom:6rem;
+    overflow:hidden;
+}
+
+/* 上中下结构-footer */
+.g-window .g-hbf-footer {
+    height:6rem; 
+    width:100%; 
+    bottom:0px; 
+    position:absolute; 
+    border-top-style:solid; 
+    border-top-width:1px; 
+    border-color:rgb(220,222,224);
+}
+
+.g-window .u-circle {
+    border-radius: 50%;
+}
+
+.g-window .u-caption {
+    -webkit-app-region: drag;
+    height: 2rem;
+    background-color:rgb(245,249,255);
+  }
+  
+  .g-window .u-sysbtn {
+      width: auto;
+      height: 2rem;
+      float: right;
+      margin: 5px 10px 5px 0px;
+  }
+  
+  .g-window .u-sysbtn .btn-close, .btn-close:visited {
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    vertical-align: middle;
+    width:1.25rem;
+    height:1.25rem;
+    background-image: url('../img/wnd/btn_wnd_gray_close.png');
+  }
+  .g-window .u-sysbtn .btn-close:hover, .btn-close:focus {
+    background-image: url('../img/wnd/btn_wnd_gray_close_hovered.png');
+  }
+  .g-window .u-sysbtn .btn-close:active {
+    background-image: url('../img/wnd/btn_wnd_gray_close_pushed.png');
+  }
+  
+  .g-window .u-sysbtn .btn-min, .btn-min:visited {
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    vertical-align: middle;
+    width:1.25rem;
+    height:1.25rem;
+    background-image: url('../img/wnd/btn_wnd_gray_min.png');
+  }
+  .g-window .u-sysbtn .btn-min:hover, .btn-min:focus {
+    background-image: url('../img/wnd/btn_wnd_gray_min_hovered.png');
+  }
+  .g-window .u-sysbtn .btn-min:active {
+    background-image: url('../img/wnd/btn_wnd_gray_min_pushed.png');
+  }
+  
+  .g-window .u-sysbtn .btn-max, .btn-max:visited {
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    vertical-align: middle;
+    width:1.25rem;
+    height:1.25rem;
+    background-image: url('../img/wnd/btn_wnd_gray_max.png');
+  }
+  .g-window .u-sysbtn .btn-max:hover, .btn-max:focus {
+    background-image: url('../img/wnd/btn_wnd_gray_max_hovered.png');
+  }
+  .g-window .u-sysbtn .btn-max:active {
+    background-image: url('../img/wnd/btn_wnd_gray_max_pushed.png');
+  }
+  
+  .g-window .u-sysbtn .btn-restore, .btn-restore:visited {
+    -webkit-app-region: no-drag;
+    display: inline-block;
+    vertical-align: middle;
+    width:1.25rem;
+    height:1.25rem;
+    background-image: url('../img/wnd/btn_wnd_gray_restore.png');
+  }
+  .g-window .u-sysbtn .btn-restore:hover, .btn-restore:focus {
+    background-image: url('../img/wnd/btn_wnd_gray_restore_hovered.png');
+  }
+  .g-window .u-sysbtn .btn-restore:active {
+    background-image: url('../img/wnd/btn_wnd_gray_restore_pushed.png');
+  }
+
+  .g-window .u-card {
+    margin: 0 0;
+  }
+
+  .g-window .u-card .u-card-cell {
+    border-bottom-color: rgb(246, 248, 255);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    height: 2.5rem;
+    vertical-align: middle;
+  }
+
+  /* 列表 */
+.g-window .u-list {
+  width: 100%;
+  height:100%;
+  overflow-y:auto;
+  overflow-x:hidden;
+}
+.g-window .u-list-item {
+  min-height: 2rem;
+  vertical-align: middle;
+}
+.g-window .u-list-item:hover {
+  background-color:rgb(245,249,255);
+}
+.g-window .u-list-item-active {
+  background-color:rgb(245,249,255);
+}
+.g-window .u-list-item .u-list-item-container {
+  height:4rem; 
+  width:15rem; 
+  border-bottom:1px solid rgb(206, 210, 214);
+  margin:auto;
+  display: flex;
+  align-items: center;
+}
+
+.g-window .u-list-item .icon {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  left:1rem; 
+  position:relative;
+}
+
+.g-window .u-list-item .single-content {
+  display:inline-block; 
+  left:1.6rem; 
+  position:relative;
+  width:10rem;
+  overflow:hidden;
+  text-overflow:ellipsis; 
+  text-align:left;
+  white-space:nowrap
+}
+
+.g-window .u-list-item .multi-content {
+  display:list-item;
+  margin-left:1.6rem;
+  width:8rem
+}
+
+.g-window .u-list-item .multi-content .title {
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.g-window .u-list-item .multi-content .content {
+  color:#ccc;
+  font-size:0.8rem;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+.g-window .cells {
+    position: relative;
+    margin: 10px auto;
+    width: 250px;
+}
+
+.g-window .cells .cell {
+    position: relative;
+    width: 100%;
+    border-bottom: 1px solid rgb(206, 210, 214);
+    line-height: 2rem;
+}
+
+.g-window .cells .logo {
+    display: block;
+    margin: 1rem auto;
+    width: 104px;
+    height: 104px;
+}
+
+.g-window .cells .ipt {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0.6rem 0 0.6rem 2.4rem;
+    font-size: 0.9rem;
+    color: rgb(44, 45, 46);
+    width: 100%;
+    border: none;
+    background-color: transparent;
+}
+
+.g-window .cells .ipt::-webkit-input-placeholder {
+    color: #b3b3b3;
+}
+
+.g-window .cells .ipt:-moz-placeholder {
+    color: #b3b3b3;
+}
+
+.g-window .cells .ipt::-moz-placeholder {
+    color: #b3b3b3;
+}
+
+.g-window .cells .ipt:-ms-input-placeholder {
+    color: #b3b3b3;
+}
+
+.g-window .cells .ipt::placeholder {
+    color: #b3b3b3;
+}
+
+.g-window .cells .error {
+    float: right;
+    clear: both;
+    color: #ed0e0e;
+}
