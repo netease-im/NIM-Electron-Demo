@@ -6,7 +6,6 @@ import router from './router'
 import store from './store'
 import '../../static/css/default.css'
 import VueContextMenu from 'vue-contextmenu'
-import 'vue-contextmenu/style/css/font-awesome.min.css'
 Vue.use(VueContextMenu)
 
 if (!process.env.IS_WEB) Vue.use(require('vue-electron'))

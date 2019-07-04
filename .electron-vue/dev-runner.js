@@ -1,5 +1,7 @@
 'use strict'
 
+process.env.NODE_ENV = 'development'
+
 const chalk = require('chalk')
 const electron = require('electron')
 const path = require('path')
@@ -41,7 +43,6 @@ function logStats (proc, data) {
 function startRenderer () {
   return new Promise((resolve, reject) => {
     rendererConfig.entry.renderer = [path.join(__dirname, 'dev-client')].concat(rendererConfig.entry.renderer)
-
     const compiler = webpack(rendererConfig)
     hotMiddleware = webpackHotMiddleware(compiler, { 
       log: false, 
@@ -80,7 +81,6 @@ function startRenderer () {
 function startMain () {
   return new Promise((resolve, reject) => {
     mainConfig.entry.main = [path.join(__dirname, '../src/main/index.dev.js')].concat(mainConfig.entry.main)
-
     const compiler = webpack(mainConfig)
 
     compiler.plugin('watch-run', (compilation, done) => {

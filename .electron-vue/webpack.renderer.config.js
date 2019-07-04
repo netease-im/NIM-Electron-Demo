@@ -8,8 +8,9 @@ const webpack = require("webpack");
 
 const BabiliWebpackPlugin = require("babili-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 /**
  * List of node_modules to include in webpack bundle
@@ -21,6 +22,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 // let whiteListedModules = ['vue']
 
 let rendererConfig = {
+  mode: process.env.NODE_ENV,
   devtool: "#cheap-module-eval-source-map",
   entry: {
     renderer: path.join(__dirname, "../src/renderer/main.js")
@@ -43,14 +45,11 @@ let rendererConfig = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        use: [MiniCssExtractPlugin.loader, "css-loader"]
       },
       {
         test: /\.html$/,
-        use: "vue-html-loader"
+        use: "vue2-html-loader"
       },
       {
         test: /\.js$/,
@@ -109,7 +108,7 @@ let rendererConfig = {
     __filename: process.env.NODE_ENV !== "production"
   },
   plugins: [
-    new ExtractTextPlugin("styles.css"),
+    new MiniCssExtractPlugin("styles.css"),
     new HtmlWebpackPlugin({
       filename: "index.html",
       template: path.resolve(__dirname, "../src/index.ejs"),
@@ -124,7 +123,8 @@ let rendererConfig = {
           : false
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new VueLoaderPlugin()
   ],
   output: {
     filename: "[name].js",
@@ -167,9 +167,6 @@ if (process.env.NODE_ENV === "production") {
         ignore: [".*"]
       }
     ]),
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": '"production"'
-    }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
     })
