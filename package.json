@@ -87,7 +87,7 @@
     "electron-builder": "^21.0.8",
     "electron-debug": "^1.4.0",
     "electron-devtools-installer": "^2.2.0",
-    "electron-packager": "^12.1.0",
+    "electron-packager": "^16.0.0",
     "eslint": "^4.4.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-friendly-formatter": "^3.0.0",
